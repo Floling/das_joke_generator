@@ -22,9 +22,48 @@ const dadJokePicker = () => {
     console.log('- ' + dadJokes[Math.floor(Math.random() * dadJokes.length)]);
 };
 
-// Let's call the function 5 times to see if it works
+// function to check if string contains a specific word, this is going to be used in the dadJokeKeword function
+const stringContainsWord = (string, word) => {
+  if (string.includes(word)) {
+      return true;
+  } else {
+      return false;
+  }; 
+}
+
+// function to call joke by keyword
+const dadJokeKeyword = (array, keyword) => {
+    // this new array stores all the dad jokes which contain our keyword
+    let matchingDadJokes = [];
+    // we use stringCintainWord function to check if the string contains a specific word and if so push the entire string into our new array
+    for (let i = 0; i < array.length; i++) {
+        if (stringContainsWord(array[i], keyword) === true) {
+            matchingDadJokes.push(array[i]); 
+        };
+    };
+    // we make sure that our new array has at least one element, if not we send an error message that the keyword could not be found
+    if (matchingDadJokes.length !== 0) {
+        for (let j = 0; j < matchingDadJokes.length; j++) {
+            console.log("- " + matchingDadJokes[j]);
+        };
+    } else {
+        console.log("Sorry no dad jokes with your keyword have been found.");
+    };
+};
+
+// this function adds the funtionality to add more jokes to the end of the dadJokes array by the user
+const dadJokeAdder = (joke) => {
+  dadJokes.push(joke);
+};
+
+// function call for random joke
 dadJokePicker();
-dadJokePicker();
-dadJokePicker();
-dadJokePicker();
-dadJokePicker();
+
+// function call dadJokeAdder with new joke and call the last joke in the dadJokes array
+dadJokeAdder("I asked my dog what's two minus two. He said nothing.");
+console.log('- ' + dadJokes[dadJokes.length - 1]);
+
+// function call dadJokeKeword with a specific Keyword
+dadJokeKeyword(dadJokes, "April");
+dadJokeKeyword(dadJokes, "ocean");
+dadJokeKeyword(dadJokes, "Peaches");

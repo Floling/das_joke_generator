@@ -22,3 +22,6 @@ The purpose of this project is to practice some of the JavaScript conecpts I hav
 3. Call the function several times to see if it really spits out random jokes
 
 ### Added scope:
+
+1. make it possible to add more jokes to the array
+2. create function that let's the user chose a specific joke from the array by putting in a key word
